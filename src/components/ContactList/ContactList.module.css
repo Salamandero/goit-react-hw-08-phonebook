@@ -1,0 +1,27 @@
+/* .list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 12px;
+} */
+.list {
+  margin-top: 10px;
+}
+.listItem {
+  display: flex;
+}
+.listItem:not(:first-child) {
+  margin-top: 5px;
+}
+.info:not(:first-child) {
+  margin-left: 20px;
+}
+.btnDelete {
+  margin-left: auto;
+  cursor: pointer;
+}
+.btnDelete :hover {
+  background: #78a1fa;
+}
