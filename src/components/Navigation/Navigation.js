@@ -1,20 +1,22 @@
-import { NavLink } from 'react-router-dom';
+import { List, ListItem } from '@mui/material';
 import { useAuth } from 'hooks';
-import css from './Navigation.module.css';
+import { NavigationLink } from 'theme';
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
     <nav>
-      <NavLink className={css.link} to="/">
-        Home
-      </NavLink>
-      {isLoggedIn && (
-        <NavLink className={css.link} to="/contacts">
-          Contacts
-        </NavLink>
-      )}
+      <List color="inherit" sx={{ display: 'flex' }}>
+        <ListItem>
+          <NavigationLink to="/">Home</NavigationLink>
+        </ListItem>
+        {isLoggedIn && (
+          <ListItem>
+            <NavigationLink to="/contacts">Contacts</NavigationLink>
+          </ListItem>
+        )}
+      </List>
     </nav>
   );
 };

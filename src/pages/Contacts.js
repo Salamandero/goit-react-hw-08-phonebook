@@ -6,6 +6,7 @@ import { ContactEditor } from 'components/ContactEditor/ContactEditor';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectLoading } from 'redux/contacts/selectors';
 import { Filter } from 'components/Filter/Filter';
+import { Box, Container } from '@mui/material';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -17,12 +18,22 @@ export default function Contacts() {
 
   return (
     <>
-      <Helmet>
-        <title>Your contacts</title>
-      </Helmet>
-      <ContactEditor />
-      <Filter />
-      {isLoading ? <p> Request in progress...</p> : <ContactList />}
+      <Container sx={{ mt: 4 }} maxWidth="md">
+        <Helmet>
+          <title>Your contacts</title>
+        </Helmet>
+
+        <ContactEditor />
+
+        <Filter />
+        {isLoading ? (
+          <Box sx={{ fontWeight: 700, textAlign: 'center', mt: 4 }}>
+            Request in progress...
+          </Box>
+        ) : (
+          <ContactList />
+        )}
+      </Container>
     </>
   );
 }

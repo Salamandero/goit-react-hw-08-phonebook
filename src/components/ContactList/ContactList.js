@@ -1,27 +1,9 @@
-// import { useSelector } from 'react-redux';
-// import { Contact } from '../Contact/Contact';
-// import { selectAllContacts } from 'redux/contacts/selectors';
-// import css from './ContactList.module.css';
-
-// export const ContactList = () => {
-//   const contacts = useSelector(selectAllContacts);
-
-//   return (
-//     <ul className={css.list}>
-//       {contacts.map(({ id, text }) => (
-//         <li key={id}>
-//           <Contact id={id} text={text} />
-//         </li>
-//       ))}
-//     </ul>
-//   );
-// };
+import { Button, List, ListItem } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
+import { theme } from 'theme';
 import { selectAllContacts } from '../../redux/contacts/selectors';
-// import { List, ContactItem, Info, BtnInfoDelete } from './ContactList.styled';
-import css from './ContactList.module.css';
 
 export const ContactList = () => {
   const contacts = useSelector(selectAllContacts);
@@ -42,21 +24,31 @@ export const ContactList = () => {
   return (
     <>
       {contacts.length > 0 && (
-        <ul className={css.list}>
+        <List>
           {visibleContacts.map(contact => (
-            <li key={contact.id} className={css.listItem}>
-              <p className="css.info">{contact.name}:</p>
-              <p className="css.info">{contact.number}</p>
-              <button
-                className={css.btnDelete}
+            <ListItem sx={{ fontSize: '18px' }} key={contact.id}>
+              <p>{contact.name}:</p>
+              <p>{contact.number}</p>
+              <Button
+                sx={{
+                  width: '100px',
+                  ml: 'auto',
+
+                  [`&:hover`]: {
+                    backgroundColor: theme.palette.secondary.main,
+                    color: 'yellow',
+                  },
+                }}
+                // color="inherit"
+                variant="outlined"
                 type="button"
                 onClick={() => onDeleteContact(contact.id)}
               >
                 Delete
-              </button>
-            </li>
+              </Button>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       )}
     </>
   );

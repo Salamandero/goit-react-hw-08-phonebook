@@ -1,10 +1,9 @@
 import toast from 'react-hot-toast';
-import css from './ContactEditor.module.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { selectAllContacts } from 'redux/contacts/selectors';
-import { TextField } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 
 export const ContactEditor = () => {
   const [name, setName] = useState('');
@@ -58,20 +57,11 @@ export const ContactEditor = () => {
 
   return (
     <>
-      <form className={css.form}>
-        {/* <label className={css.label}>
-          Name
-          <input
-            className={css.input}
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-        </label> */}
+      <Box component="form" sx={{ display: 'grid', gap: '24px' }}>
+        <Typography variant="h5" sx={{ textAlign: 'center' }}>
+          Write new contact
+        </Typography>
+
         <TextField
           id="outlined-textarea"
           label="Name"
@@ -99,10 +89,16 @@ export const ContactEditor = () => {
           required
         />
 
-        <button className={css.button} type="submit" onClick={handleClick}>
+        <Button
+          sx={{ width: '50%', m: '0 auto' }}
+          // color="inherit"
+          variant="contained"
+          type="submit"
+          onClick={handleClick}
+        >
           Add contact
-        </button>
-      </form>
+        </Button>
+      </Box>
     </>
   );
 };

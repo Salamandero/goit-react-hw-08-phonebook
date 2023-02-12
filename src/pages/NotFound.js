@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
+import React from 'react';
 
-export default function Home() {
+const NotFound = () => {
   return (
     <Box
       sx={{
@@ -11,15 +12,15 @@ export default function Home() {
       }}
     >
       <Box textAlign={'center'}>
-        <Typography variant="h3" sx={{ fontWeight: 700 }}>
-          Contact manager welcome page
+        <Typography variant="h6" sx={{ fontWeight: 700 }}>
+          PAGE NOT FOUND
         </Typography>
-        <Typography variant="h6">
-          <span role="img" aria-label="Greeting icon">
-            💁‍♀️
-          </span>
+        <Typography variant="h6" sx={{ fontWeight: 700 }}>
+          404
         </Typography>
       </Box>
     </Box>
   );
-}
+};
+
+export default NotFound;
