@@ -1,4 +1,4 @@
-import { Button, List, ListItem } from '@mui/material';
+import { Box, Button, List, ListItem, Typography } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
@@ -23,7 +23,7 @@ export const ContactList = () => {
   const visibleContacts = getVisibleContacts();
   return (
     <>
-      {contacts.length > 0 && (
+      {contacts.length > 0 ? (
         <List>
           {visibleContacts.map(contact => (
             <ListItem sx={{ fontSize: '18px' }} key={contact.id}>
@@ -49,6 +49,19 @@ export const ContactList = () => {
             </ListItem>
           ))}
         </List>
+      ) : (
+        <Box
+          sx={{
+            display: 'flex',
+            textAlign: 'center',
+            justifyContent: 'center',
+            mt: '24px',
+          }}
+        >
+          <Typography sx={{ fontWeight: 700 }}>
+            You don`t have any contacts yet...
+          </Typography>
+        </Box>
       )}
     </>
   );
